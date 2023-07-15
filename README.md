@@ -1,107 +1,86 @@
-User Management API
-This is a RESTful API for managing users. It allows users to register, authenticate, and perform CRUD operations on user data.
+# Users API
 
-Prerequisites
-Before running the API, make sure you have the following installed:
+This repository contains an API for managing user data. It allows you to retrieve, create, update, and delete user information. The API is built using Node.js, Express.js, and PostgreSQL.
 
-Node.js (v12 or above)
-PostgreSQL (v10 or above)
-Getting Started
-Clone the repository:
-shell
+## Setup
+
+To set up and run the API locally, follow these steps:
+
+### Prerequisites
+
+- Node.js (version 12 or above)
+- PostgreSQL (version 9 or above)
+
+### 1. Clone the Repository
+
+Clone the repository to your local machine using the following command:
+
+git clone https://github.com/your-username/users-api.git
+
+bash
 Copy code
-git clone https://github.com/swati-the-coder/project.git
-cd user-management-api
-Install the dependencies:
-shell
-Copy code
+
+### 2. Install Dependencies
+
+Navigate to the cloned repository and install the required dependencies by running the following command:
+
 npm install
-Database Setup:
 
-Create a new PostgreSQL database for the application.
-
-In the project's root directory, create a .env file and update the following environment variables with your database credentials:
-
-makefile
+markdown
 Copy code
-DB_HOST=localhost
-DB_PORT=5000
-DB_NAME=user_management
-DB_USER=postgres
-DB_PASSWORD=swati123
-Run the database migrations:
 
-shell
+### 3. Database Configuration
+
+Create a PostgreSQL database and configure the connection in the `db.js` file. Update the `pool` configuration object with your database credentials.
+
+### 4. Environment Variables
+
+Create a `.env` file in the project root directory and provide the following environment variables:
+
+PORT=3000
+JWT_SECRET=your_jwt_secret_key
+
+vbnet
 Copy code
+
+Replace `your_jwt_secret_key` with your desired JWT secret key for authentication.
+
+### 5. Run Migrations
+
+Run the database migrations to create the necessary tables by executing the following command:
+
 npm run migrate
-This will create the necessary tables in the database.
 
-Start the API:
-shell
+sql
 Copy code
+
+### 6. Start the Server
+
+Start the API server by running the following command:
+
 npm start
-The API will start running on http://localhost:3000.
 
-API Documentation
-You can access the Swagger documentation for the API at http://localhost:3000/api-docs.
-
-Testing
-To run the unit tests for the API, use the following command:
-
-shell
+sql
 Copy code
-npm test
-Usage
-You can use tools like Postman to interact with the API endpoints. Here are a few examples:
 
-Register a new user:
+The server will start running on http://localhost:3000.
 
-Copy code
-POST /auth/register
-Body: {
-"username": "newuser",
-"password": "newpassword"
-}
-Authenticate and generate a JWT token:
+## API Endpoints
 
-Copy code
-POST /auth/login
-Body: {
-"username": "newuser",
-"password": "newpassword"
-}
-Get a list of users:
+The following endpoints are available:
 
-Copy code
-GET /users
-Get a specific user by ID:
+- GET /users: Retrieve all users
+- GET /users/:id: Retrieve a specific user by ID
+- POST /users: Create a new user
+- PUT /users/:id: Update an existing user
+- DELETE /users/:id: Delete a user
 
-Copy code
-GET /users/:id
-Create a new user:
+Make requests to these endpoints using a tool like cURL, Postman, or any API testing tool of your choice.
 
-Copy code
-POST /users
-Body: {
-"username": "newuser",
-"password": "newpassword"
-}
-Update an existing user:
+## Contributing
 
-Copy code
-PUT /users/:id
-Body: {
-"username": "updateduser",
-"password": "updatedpassword"
-}
-Delete a user:
+Contributions are welcome! If you find any issues or want to add new features, feel free to submit a pull request.
 
-Copy code
-DELETE /users/:id
-Make sure to replace :id with the actual ID of the user.
+## License
 
-Contributing
-Contributions are welcome! If you find any issues or have suggestions for improvement, please open an issue or submit a pull request.
-
-License
-This project is licensed under the MIT License.
+This project is licensed under the [MIT License](LICENSE).
